@@ -2,6 +2,8 @@
 
 Stress test an HTTP/HTTPS endpoint, with ramp up curve
 
+![](http://i.imgur.com/Nphdwnm.png)
+
 ## install
 
 ```sh

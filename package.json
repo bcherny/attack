@@ -1,6 +1,6 @@
 {
   "name": "attack",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Basic load tester for HTTP/S servers",
   "bin": "attack.js",
   "main": "attack.js",
