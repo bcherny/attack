@@ -1,0 +1,30 @@
+{
+  "name": "attack",
+  "version": "0.0.1",
+  "description": "Basic load tester for HTTP/S servers",
+  "bin": "attack.js",
+  "main": "attack.js",
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:bcherny/attack.git"
+  },
+  "keywords": [
+    "load",
+    "dos",
+    "attack",
+    "ddos",
+    "swarm",
+    "test",
+    "ramp",
+    "rampup"
+  ],
+  "author": "Boris Cherny <boris@performancejs.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bcherny/attack/issues"
+  },
+  "homepage": "https://github.com/bcherny/attack",
+  "dependencies": {
+    "chalk": "^0.5.1"
+  }
+}
