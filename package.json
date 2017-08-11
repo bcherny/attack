@@ -1,8 +1,10 @@
 {
   "name": "attack",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Basic load tester for HTTP/S servers",
-  "bin": "attack.js",
+  "bin": {
+    "attack": "attack.js"
+  },
   "main": "attack.js",
   "repository": {
     "type": "git",
@@ -25,6 +27,7 @@
   },
   "homepage": "https://github.com/bcherny/attack",
   "dependencies": {
-    "chalk": "^0.5.1"
+    "chalk": "^0.5.1",
+    "url-parse": "^1.1.9"
   }
 }

@@ -1,32 +1,31 @@
-#!/bin/env node
+#!/usr/bin/env node
 
-/**
- * Stress test an HTTP/HTTPS endpoint, with ramp up curve
- *
- * usage: node swarm https://url.com/foo
- */
+process.env.NODE_TLS_REJECT_UNAUTHORIZED = '0'
 
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0'
-  
-const url = require('url')
+const parse = require('url-parse')
 const chalk = require('chalk')
 const uri = process.argv[2]
-const parts = url.parse(uri)
+const parts = parse(uri)
 const server = parts.protocol == 'https:' ? require('https') : require('http')
 
 const runs = [1, 10, 10, 100, 100, 100, 200, 200, 200, 200, 500, 1000, 10000]
 
+/**
+ * Stress test an HTTP/HTTPS endpoint, with ramp up curve
+ *
+ * usage: attack https://url.com/foo
+ */
 function attack (count, cb) {
 
-  var good = 0
-  var bad = 0
-  var requests = []
+  let good = 0
+  let bad = 0
+  let requests = []
 
-  for (var n = 0; n < count; n++) {
+  for (let n = 0; n < count; n++) {
 
     requests.push(
       server.get({
-        host: parts.host,
+        hostname: parts.hostname,
         port: parts.port,
         path: parts.path,
         agent: false
@@ -38,7 +37,7 @@ function attack (count, cb) {
         }
 
       })
-      .on('error', function (err) {
+      .on('error', function(err) {
         bad++
 
         // if more than 20% of reqests error out, bail
@@ -68,14 +67,14 @@ function attack (count, cb) {
 
 function go (runs) {
 
-  var time0 = new Date().getTime()
+  let start = Date.now()
 
   attack(runs[0], function (good, bad) {
 
-    var total = good + bad
-    var rate = good/total
-    var time = new Date().getTime() - time0
-    var niceRate = (100*rate).toFixed(2) + '%'
+    let total = good + bad
+    let rate = good/total
+    let time = Date.now() - start
+    let niceRate = (100*rate).toFixed(2) + '%'
 
     if (rate == 1) {
       niceRate = chalk.green(niceRate)

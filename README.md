@@ -1,23 +1,21 @@
 # attack!
 
-Stress test an HTTP/HTTPS endpoint, with ramp up curve
+> Stress test an HTTP/HTTPS endpoint, with ramp up curve. To be used only for good.
 
 ![](http://i.imgur.com/Nphdwnm.png)
 
 ## install
 
 ```sh
-npm install attack
+npm install attack -g
 ```
 
 ## usage
 
 ```sh
-npm install
-
 # http
-node attack http://foo.com
+attack http://foo.com
 
 # https
-node attack https://foo.com
+attack https://foo.com
 ```
